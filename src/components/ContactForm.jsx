@@ -1,11 +1,11 @@
+import React from 'react';
 import useForm from '../hooks/useForm';
 
 export default function ContactForm() {
-  // Using a data object to hold all form fields is a best practice for centralized state management.
   const initialValues = {
     name: '',
     email: '',
-    requestType: '', // can be one of: option1, option2, option3, option4
+    requestType: '',
     title: '',
     description: '',
   };
@@ -13,9 +13,8 @@ export default function ContactForm() {
   const { values, errors, handleChange, handleSubmit, resetForm } = useForm(initialValues);
 
   const onSubmit = () => {
-    // Here you would typically send the data to a server or process it
     console.log('Form submitted:', values);
-    // After submission, clear the form.
+    // Clear the form after submission.
     resetForm();
   };
 
@@ -24,12 +23,12 @@ export default function ContactForm() {
       <div>
         <label>Name:</label>
         <input type="text" name="name" value={values.name} onChange={handleChange} />
-        {errors.name && <p style={{color:'red'}}>{errors.name}</p>}
+        {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
       </div>
       <div>
         <label>Email:</label>
         <input type="email" name="email" value={values.email} onChange={handleChange} />
-        {errors.email && <p style={{color:'red'}}>{errors.email}</p>}
+        {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
       </div>
       <div>
         <label>Request Type:</label>
@@ -75,17 +74,17 @@ export default function ContactForm() {
             Option 4
           </label>
         </div>
-        {errors.requestType && <p style={{color:'red'}}>{errors.requestType}</p>}
+        {errors.requestType && <p style={{ color: 'red' }}>{errors.requestType}</p>}
       </div>
       <div>
         <label>Title:</label>
         <input type="text" name="title" value={values.title} onChange={handleChange} />
-        {errors.title && <p style={{color:'red'}}>{errors.title}</p>}
+        {errors.title && <p style={{ color: 'red' }}>{errors.title}</p>}
       </div>
       <div>
         <label>Description:</label>
         <textarea name="description" value={values.description} onChange={handleChange}></textarea>
-        {errors.description && <p style={{color:'red'}}>{errors.description}</p>}
+        {errors.description && <p style={{ color: 'red' }}>{errors.description}</p>}
       </div>
       <button type="submit">Submit</button>
     </form>
